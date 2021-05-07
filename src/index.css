@@ -151,5 +151,35 @@ footer{
 }
 
 .button:hover{
-  background: #dd6bd7;
+  background: #b150ac;
+  border: .1rem rgb(22, 18, 18) solid;
+}
+
+/*filter*/
+
+.filter{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 0.1rem black solid;
+  margin: 1rem;
+}
+
+.filter div{
+  flex:1;  /*equal width*/
+  
+}
+
+.filter select{
+  border-radius: 0.8rem;
+  outline: 0;
+  color: #5c2459;
+}
+.filter select:hover{
+  cursor: pointer;
+}
+
+.filter {
+  
+  color: #571f54;
 }
