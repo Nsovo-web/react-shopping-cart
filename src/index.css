@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,600&display=swap');
 
 html{
-font-size:72.5%;
+font-size:62.5%;
 box-sizing: border-box;
 
 }
@@ -12,7 +12,7 @@ body, #root {
   font-family: 'Poppins',sans-serif;
 }
 
-body, input, select, textarea{
+body, input, select, textarea,button{
   font-size:1.6rem;
 }
 
@@ -56,7 +56,7 @@ header img{
 main{
   grid-area: main;
   
-  padding:2rem;
+  
   
 }
 
@@ -68,4 +68,88 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.content{
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.products{
+  flex:3 60rem;
+}
+.sidebar{
+  flex:1 20rem;
+  margin-left: auto;
+}
+
+/*products / product List*/
+
+.product-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /*horizontal*/
+  align-items: center;    /*horizontal*/
+  padding: 0;
+  margin:0;
+  list-style: none;
+}
+
+.product-list li{
+  flex: 0 1 29rem;
+  height:47rem;
+  padding:1rem;
+  
+}
+
+.product{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.product a{
+  
+ text-decoration: none;
+ font-size: small;
+ 
+}
+
+.product img{
+  max-width: 37rem;
+  max-height: 37rem;
+}
+
+.product-price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.product-price div,.product-price button{
+  text-align: center;
+  flex: 1;
+}
+
+.product-price button{
+  font-size: 2rem;
+  
+}
+
+.button{
+  padding: 1rem;
+  border: .1rem #c0c0c0;
+  background: #f0f0f0;
+}
+
+.button.primary{
+
+  background: #974893;
+  cursor: pointer;
+}
+
+.button:hover{
+  background: #dd6bd7;
 }
