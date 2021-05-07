@@ -183,3 +183,12 @@ footer{
   
   color: #571f54;
 }
+
+/*Cart Header*/
+
+.cart-header{
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 0.1rem black solid;
+  margin: 1rem;
+}

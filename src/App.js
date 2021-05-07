@@ -3,6 +3,7 @@ import data from './data.json'
 import React from 'react';
 import Products from './Components/Products';
 import Filter from './Components/filter';
+import Cart from './Components/Cart';
 
 //featur-1 changes
 //convert function component to class componet
@@ -11,6 +12,7 @@ class App extends React.Component {
     super(); //parent constructor
     this.state ={
       products: data.products,
+      cartItems: [],
       size:"",               //dress size
       sort:""               // lowest price, highest price, latest products
     }
@@ -19,7 +21,27 @@ class App extends React.Component {
 
   }
   
-
+  addToCart =(product)=>{
+   
+    const cartItems = this.state.cartItems.slice();  //created a clone of the cartItem
+    
+    let alreadyInCart=false;
+    cartItems.forEach(item=>{
+      if(item._id === product._id){
+        item.count++;
+        alreadyInCart = true;
+      }
+    
+    })
+      if(!alreadyInCart){
+        cartItems.push({...product, count:1})  // add count as a new item into cartItems. `(...) spread operator used to unpack array elements
+        
+      }
+   
+    
+    this.setState({cartItems:cartItems})
+    //console.log(cartItems)
+  }
 
   sortProducts =(event)=>{  
     const sort = event.target.value;                   //function to sort our products
@@ -74,10 +96,10 @@ render(){
           <div className="products">
             <Filter count={this.state.products.length} size={this.state.size} sort={this.state.sort} 
             filterProducts={this.filterProducts} sortProducts={this.sortProducts}/>
-            <Products Products={this.state.products}/>
+            <Products Products={this.state.products} addToCart={this.addToCart}/>
           </div>
           <div className="sidebar">
-            cart Items
+             <Cart cartItems={this.state.cartItems}/>
           </div>
           
         </div>
