@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { DeleteSweep} from '@material-ui/icons'
 import formatCurrency from './../util'
+import CartIcon from './CartIcon'
+
 
 export default class Cart extends Component {
     render() {
@@ -11,9 +13,9 @@ export default class Cart extends Component {
             <>
                 <div>
                     {this.props.cartItems.length === 0?
-                    <div className="cart cart-header">The Cart Is Empty</div>
+                    <div className="cart cart-header"><CartIcon numberOfItems={this.props.cartItems.length}/>{"  "}No Items</div>
                     :
-                    <div className="cart cart-header">You Have {this.props.cartItems.length} Item(s) In The Cart</div>
+                    <div className="cart cart-header"><CartIcon numberOfItems={this.props.cartItems.length}/>{"  "}Item(s) In The Cart</div>
                     }
                     
                 </div>
