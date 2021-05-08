@@ -20,6 +20,11 @@ class App extends React.Component {
   
 
   }
+
+  removeItem =(product) =>{ //accepts the product we are going to remove
+   const cartItems = this.state.cartItems.slice();
+   this.setState({cartItems:cartItems.filter(x=>x._id !== product._id)})
+  }
   
   addToCart =(product)=>{
    
@@ -99,7 +104,7 @@ render(){
             <Products Products={this.state.products} addToCart={this.addToCart}/>
           </div>
           <div className="sidebar">
-             <Cart cartItems={this.state.cartItems}/>
+             <Cart cartItems={this.state.cartItems} removeItem={this.removeItem}/>
           </div>
           
         </div>

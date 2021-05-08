@@ -142,6 +142,7 @@ footer{
   padding: 1rem;
   border: .1rem #c0c0c0;
   background: #f0f0f0;
+  box-shadow: '0 3px 5px 2px rgba(255, 105, 135, .3)';
 }
 
 .button.primary{
@@ -191,4 +192,74 @@ footer{
   padding: 1rem;
   border-bottom: 0.1rem black solid;
   margin: 1rem;
+}
+
+.cart{
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  
+}
+.delete-button{
+  outline: 0;
+  border:none;
+  background:transparent;
+  color:#571f54;
+  
+  
+}
+
+.delete-button:hover{
+  cursor: pointer;
+}
+.delete-icon{
+  size: 100%;
+}
+
+.cart-items{
+  
+  padding:0;
+  width:100%;
+  
+}
+
+.cart-items img{
+   width: 5rem;
+   margin-right: .6rem;
+
+}
+.cart ul{
+  list-style: none;
+}
+
+.cart ul li{
+  display: flex;
+  padding:.5rem;
+}
+.cart-itmes li div{
+  padding: .5rem;
+}
+
+.right{
+   text-align: right;
+}
+.cart-total{
+  margin-top: .5rem;
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}
+.proceed{
+  background: #974893;
+  padding: 1rem;
+  border: .1rem #c0c0c0;
+  font-size: 1.8rem;
+  box-shadow: '0 3px 5px 2px rgba(255, 105, 135, .3)';
+  align-items: center;
+  flex: .5;
+}
+.proceed:hover{
+  cursor: pointer;
+  background: #b150ac;
+  border: .1rem rgb(22, 18, 18) solid;
 }
