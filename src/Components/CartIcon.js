@@ -19,7 +19,7 @@ export default class CartIcon extends Component {
 render(){
     return (
         <IconButton aria-label="cart">
-          <StyledBadge badgeContent={this.props.numberOfItems} color="secondary">
+          <StyledBadge badgeContent={this.props.numberOfItems} showZero color="secondary">
             <ShoppingCartIcon />
           </StyledBadge>
         </IconButton>
