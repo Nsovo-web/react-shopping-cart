@@ -264,3 +264,20 @@ footer{
   background: #b150ac;
   border: .1rem rgb(22, 18, 18) solid;
 }
+.form-container{
+  padding:0;
+  width:100%;
+}
+.form-container li{
+ display: flex;
+ flex-direction: column;
+ padding: 1rem;
+ width:100%;
+}
+form{
+  width:100%;
+}
+input{
+  padding: 1rem;
+  border: 1px solid #c0c0c0;
+}
