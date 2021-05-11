@@ -4,18 +4,20 @@ import Fade from 'react-reveal/Fade'
 import Modal from 'react-modal'
 import Zoom from 'react-reveal/Zoom'
 
+
 export default class Products extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            modProduct:null
+            product:null
         }
     }
     openModal=(product)=> {
-        this.setState({modProduct:product}) //fill the state product with the selected product
+        this.setState({product:product}) //fill the state product with the selected product
     }
     closeModal=()=>{
-        this.setState({modProduct:null})
+       this.setState({product:null})
+       
     }
     render() {
     // const modProduct = this.state.modProduct;
@@ -41,8 +43,8 @@ export default class Products extends Component {
                 </ul>
                 </Fade> 
                     <Zoom >
-                        <Modal isOpen={this.state.modProduct} onRequestClose={this.state.modProduct}>
-                            <button className="close-modal" onClick={()=>this.closeModal}>X</button>
+                        <Modal className="Modal Overlay" isOpen={this.state.product} onRequestClose={() => this.closeModal()}>
+                            <button className="close-modal" onClick={()=>this.closeModal()}>X</button>
                         <div>Modal</div>
                         </Modal>
                     </Zoom>
