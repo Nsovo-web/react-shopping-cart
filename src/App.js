@@ -4,6 +4,8 @@ import React from 'react';
 import Products from './Components/Products';
 import Filter from './Components/filter';
 import Cart from './Components/Cart';
+import store from './store'
+import { Provider } from 'react-redux';
 
 //featur-1 changes
 //convert function component to class componet
@@ -94,6 +96,7 @@ class App extends React.Component {
 render(){
   
   return (
+    <Provider store={store}>
     <>
     
   <div className="grid-container">
@@ -117,6 +120,7 @@ render(){
      <footer>All Rights Reserved</footer>
   </div>
   </>
+  </Provider>
 );
 }
 }
