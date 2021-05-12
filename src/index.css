@@ -26,6 +26,7 @@ body, input, select, textarea,button{
 
 header{
   position: sticky;
+  z-index: 10;
   position: -webkit-sticky;
   top: 0;
 
@@ -280,4 +281,83 @@ form{
 input{
   padding: 1rem;
   border: 1px solid #c0c0c0;
+}
+
+.Modal {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  background-color: papayawhip;
+  
+}
+.Overlay {
+  position: fixed;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(247, 206, 255);
+  height: 70%;
+  width:90%;
+  transform: translate(-50%,-45%);
+  opacity: 0.93;
+  padding:1rem;
+  overflow-y: scroll;
+  
+}
+.Overlay::-webkit-scrollbar{
+  width: 10px;
+}
+
+.close-modal{
+  border-radius:50%;
+  background:#974893 ;
+  border:1px solid #c0c0c0;
+  position:absolute;
+  top:1rem;
+  right:1rem;
+  z-index: 10;
+
+}
+
+.close-modal:hover{
+  cursor: pointer;
+}
+
+.product-details img{
+  max-width: 30rem;
+  max-height: 46rem;
+  margin: 1rem auto;
+}
+.product-details{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  max-height: 96vh;
+  flex:1 1;
+}
+.product-details-desc{
+ width: 60%;
+ margin:1rem 2rem 5rem 0rem;
+ 
+}
+
+.modal-price{
+position: absolute;
+bottom:4rem;
+  justify-content: space-between;
+  display: flex;
+  width:60%;
+  
+}
+.product-sizes{
+  margin-top:2rem;
+}
+
+.modal-price > *{
+  width:100%;
 }

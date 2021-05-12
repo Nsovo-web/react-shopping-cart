@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { DeleteSweep} from '@material-ui/icons'
 import formatCurrency from './../util'
 import CartIcon from './CartIcon'
-
+import Fade from 'react-reveal/Fade'
 
 export default class Cart extends Component {
     constructor(props) {
@@ -45,6 +45,7 @@ export default class Cart extends Component {
                     <div className="cart">
                         <ul className="cart-items">
                             {this.props.cartItems.map((item) =>(
+                                <Fade left cascade>
                                 <li key={item._id}>
                                     <div>
                                         <img src={item.image} alt={item.title}/>
@@ -57,6 +58,7 @@ export default class Cart extends Component {
                                         </div>
                                     </div>
                                 </li>
+                                </Fade>
                             ))}
                          {this.props.cartItems.length !== 0 &&(
                              <hr/>
@@ -67,6 +69,7 @@ export default class Cart extends Component {
                     {this.props.cartItems.length !== 0 &&(
                         <div>
                             <div className="cart">
+                              <Fade cascade top>  
                               <div className="cart-total">
                                  <div>
                                  Total:{" "}
@@ -76,9 +79,11 @@ export default class Cart extends Component {
                                  {" "}
                                   <button onClick={()=>{this.setState({showCheckout: true})}} className="proceed">Proceed</button>
                                </div>
+                               </Fade>
                            </div>
                            {this.state.showCheckout && (
                               <div className="cart">
+                                 <Fade cascade right> 
                                 <form onSubmit={this.createOrder}>
                                    <ul className="form-container">
                                        <li>
@@ -98,6 +103,7 @@ export default class Cart extends Component {
                                        </li>
                                    </ul>
                                 </form>
+                                </Fade>
                               </div> 
                            )}
                         </div>
