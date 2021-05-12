@@ -3,17 +3,19 @@ import formatCurrency from './../util'
 import Fade from 'react-reveal/Fade'
 import Modal from 'react-modal'
 import Zoom from 'react-reveal/Zoom'
-
+//import Flip from 'react-reveal/Flip';
 
 export default class Products extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            product:null
+            product:null,
         }
     }
     openModal=(product)=> {
         this.setState({product:product}) //fill the state product with the selected product
+        console.log(this.state.product)
+        
     }
     closeModal=()=>{
        this.setState({product:null})
@@ -42,12 +44,43 @@ export default class Products extends Component {
                     ))}
                 </ul>
                 </Fade> 
+                 
+              {this.state.product &&(
+                    <Modal className="Modal Overlay" isOpen={true} onRequestClose={() => this.closeModal()}>
                     <Zoom >
-                        <Modal className="Modal Overlay" isOpen={this.state.product} onRequestClose={() => this.closeModal()}>
-                            <button className="close-modal" onClick={()=>this.closeModal()}>X</button>
-                        <div>Modal</div>
-                        </Modal>
+                        <button className="close-modal" onClick={()=>this.closeModal()}>X</button>
+                        <div className="product-details">
+                            {this.state.product &&(
+                            <div className="product-details">
+                                <div>
+                                    <img src={this.state.product.image} alt={this.state.product.title}></img>
+                                    <p><strong>{this.state.product.title}</strong></p>
+                                </div>
+                                
+                                <div className="product-details-desc">
+                                    
+                                    <div>{this.state.product.description}</div>
+                                    <div className="product-sizes">
+                                        <p>Available sizes:{" "}
+                                            {this.state.product.availableSizes.map(size =>(
+                                                <span>{" "}<button className="button">{size}</button></span>
+                                            ))}
+                                        </p>
+                                    </div>
+                                    <div className="modal-price">
+                                    <div>Price: {formatCurrency(this.state.product.price)}</div>
+                                    <button className="button primary" onClick={()=>{
+                                        this.closeModal();
+                                        this.props.addToCart(this.state.product)}}>Add To Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            )}
+                        </div>
                     </Zoom>
+                </Modal>
+              )}
+                      
             </div>
         )
     }
