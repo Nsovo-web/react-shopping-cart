@@ -109,7 +109,7 @@ render(){
           <div className="products">
             <Filter count={this.state.products.length} size={this.state.size} sort={this.state.sort} 
             filterProducts={this.filterProducts} sortProducts={this.sortProducts}/>
-            <Products Products={this.state.products} addToCart={this.addToCart}/>
+            <Products products={this.state.products} addToCart={this.addToCart}/>
           </div>
           <div className="sidebar">
              <Cart saveOrder={this.saveOrder} cartItems={this.state.cartItems} removeItem={this.removeItem}/>

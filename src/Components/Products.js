@@ -31,8 +31,11 @@ import {fetchProducts} from '../Actions/productActions'
         return (
             <div>
                 <Fade bottom cascade={true}>
+                {!this.props.products ? <div>loading...</div>
+                
+                :
                 <ul className="product-list">
-                   {this.props.Products.map((product) =>(
+                   {this.props.products.map((product) =>(
                        <li key={product._id}>
                            <div className="product">
                             <a href={"#" + product._id} onClick={()=>this.openModal(product)}>
@@ -48,6 +51,7 @@ import {fetchProducts} from '../Actions/productActions'
                        </li>
                     ))}
                 </ul>
+                }
                 </Fade> 
                  
               {this.state.product &&(
