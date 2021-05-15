@@ -47,6 +47,36 @@ app.delete("/api/products/:id",async(req, res)=>{
     res.send(deletedProduct);
 })
 
+//create model for ORDER
+const orderModel = mongoose.model("order",new mongoose.Schema({
+    _id:{type:String ,default: shortid.generate},
+    email:String, 
+    name:String,
+    address:String, 
+    total:Number,
+    cartItems:[{
+        _id:String,
+        title:String,
+        count:Number,
+        price:Number
+    }]
+},
+{
+    timestamps:true,
+}
+))
+
+//CRUD operations for the order schema
+//insert new items
+app.post("/api/order",async(req, res)=>{
+    if(!req.body.name || !req.body.email || !req.body.address || !req.body.total || !req.body.cartItems){ //check that all required fields exist
+       return res.send({message:"Please Enter All Required Fields"})
+    }
+    const order = await orderModel(req.body.save())
+    res.send(order)
+})
+
+
 //listen to a port and launch the server
 
 const port = process.env.PORT||5000;
