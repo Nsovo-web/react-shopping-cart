@@ -4,6 +4,8 @@ import React from 'react';
 import Products from './Components/Products';
 import Filter from './Components/filter';
 import Cart from './Components/Cart';
+import store from './store'
+import { Provider } from 'react-redux';
 
 //featur-1 changes
 //convert function component to class componet
@@ -94,6 +96,7 @@ class App extends React.Component {
 render(){
   
   return (
+    <Provider store={store}>
     <>
     
   <div className="grid-container">
@@ -106,7 +109,7 @@ render(){
           <div className="products">
             <Filter count={this.state.products.length} size={this.state.size} sort={this.state.sort} 
             filterProducts={this.filterProducts} sortProducts={this.sortProducts}/>
-            <Products Products={this.state.products} addToCart={this.addToCart}/>
+            <Products products={this.state.products} addToCart={this.addToCart}/>
           </div>
           <div className="sidebar">
              <Cart saveOrder={this.saveOrder} cartItems={this.state.cartItems} removeItem={this.removeItem}/>
@@ -117,6 +120,7 @@ render(){
      <footer>All Rights Reserved</footer>
   </div>
   </>
+  </Provider>
 );
 }
 }

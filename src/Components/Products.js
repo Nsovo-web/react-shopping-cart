@@ -3,14 +3,19 @@ import formatCurrency from './../util'
 import Fade from 'react-reveal/Fade'
 import Modal from 'react-modal'
 import Zoom from 'react-reveal/Zoom'
+import {connect} from 'react-redux'
+import {fetchProducts} from '../Actions/productActions'
 //import Flip from 'react-reveal/Flip';
 
-export default class Products extends Component {
+ class Products extends Component {
     constructor(props) {
         super(props)
         this.state = {
             product:null,
         }
+    }
+    componentDidMount() {
+        this.props.fetchProducts()
     }
     openModal=(product)=> {
         this.setState({product:product}) //fill the state product with the selected product
@@ -26,8 +31,11 @@ export default class Products extends Component {
         return (
             <div>
                 <Fade bottom cascade={true}>
+                {!this.props.products ? <div>loading...</div>
+                
+                :
                 <ul className="product-list">
-                   {this.props.Products.map((product) =>(
+                   {this.props.products.map((product) =>(
                        <li key={product._id}>
                            <div className="product">
                             <a href={"#" + product._id} onClick={()=>this.openModal(product)}>
@@ -43,6 +51,7 @@ export default class Products extends Component {
                        </li>
                     ))}
                 </ul>
+                }
                 </Fade> 
                  
               {this.state.product &&(
@@ -85,3 +94,5 @@ export default class Products extends Component {
         )
     }
 }
+//we set an items field in the reducer , so use products.items to retrieve the product
+export default connect((state)=>({products:state.products.items}),{fetchProducts})(Products)
