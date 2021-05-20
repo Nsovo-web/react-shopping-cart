@@ -5,6 +5,7 @@ import CartIcon from './CartIcon'
 import Fade from 'react-reveal/Fade'
 import {connect} from 'react-redux'
 import {createOrder,clearOrder} from '../Actions/orderActions'
+import {removeFromCart} from '../Actions/cartActions'
 import Modal from 'react-modal'
 import { Zoom } from '@material-ui/core'
 
@@ -96,7 +97,7 @@ class Cart extends Component {
                                         <div>{item.title}</div>
                                         <div className="right">
                                          <div>{formatCurrency(item.price)} X {item.count}</div>   
-                                        <button onClick={()=>this.props.removeItem(item)} className="delete-button" ><DeleteSweep className="delete-icon"/></button>
+                                        <button onClick={()=>this.props.removeFromCart(item)} className="delete-button" ><DeleteSweep className="delete-icon"/></button>
                                         </div>
                                     </div>
                                 </li>
@@ -158,7 +159,8 @@ class Cart extends Component {
 }
 
 export default connect((state)=>({
+    cartItems: state.cart.cartItems,
    order: state.order.order,
 }),
-{createOrder,clearOrder}
+{removeFromCart,createOrder,clearOrder}
 )(Cart)
