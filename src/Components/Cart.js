@@ -24,14 +24,14 @@ class Cart extends Component {
     createOrder = (e)=>{
         e.preventDefault();//will not refresh the page when user clicks on submit button // and prevent post back of the form
         //create an order object 
-        const order ={
+        const Order ={
             name: this.state.name,
             email: this.state.email,
-            addres: this.state.address,
+            address: this.state.address,
             cartItems:this.props.cartItems,
-            total:formatCurrency(this.props.cartItems.reduce((acc,cItem)=> acc + (cItem.price*cItem.count) ,0))
-        }
-        this.props.createOrder(order);  //the action is from props, linked to orderActions
+            total:this.props.cartItems.reduce((acc,cItem)=> acc + (cItem.price*cItem.count) ,0),
+        };
+        this.props.createOrder(Order);  //the action is from props, linked to orderActions
     }
     closeModal=()=>{
         this.props.clearOrder();
@@ -39,7 +39,7 @@ class Cart extends Component {
      }
     render() {
         
-            //const {cartItems} = this.props.cartItems;
+            const {order} = this.props;
          //from the parent component get the cartItems passed as properties
         return (
             <>
@@ -49,9 +49,10 @@ class Cart extends Component {
                     :
                     <div className="cart cart-header"><CartIcon numberOfItems={this.props.cartItems.length}/>{"  "}Item(s) In The Cart</div>
                     }
-                    {this.props.order && 
-                    <Modal isOpen={true} onRequestClose={this.closeModal()}>
-                        <Zoom>
+                  
+                </div>
+                {order && (
+                      <Modal isOpen={true} className="Modal Overlay">
                             <button className="close-modal" onClick={this.closeModal}>X</button>
                             <div className="order-details">
                                 <h3 className="success-msg">Your order has been place</h3>
@@ -71,7 +72,7 @@ class Cart extends Component {
                                     </li>
                                     <li>
                                         <div>Total:</div>
-                                        <div>{formatCurrency(this.props.order.total)}</div>
+                                        <div>{this.props.order.total}</div>
                                     </li>
                                     <li>
                                         <div>Cart Items:</div>
@@ -81,9 +82,8 @@ class Cart extends Component {
                                     </li>
                                 </ul>
                             </div>
-                        </Zoom>
-                    </Modal>}
-                </div>
+                        </Modal>
+                    )}
                 <div>
                     <div className="cart">
                         <ul className="cart-items">

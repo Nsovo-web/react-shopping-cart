@@ -7,7 +7,7 @@ const orderReducer = (state={},action)=>{
           return{order:action.payload};
       case CLEAR_ORDER:
         
-        return{order:null};
+            return{order:null};
       default:
           return state;
   }

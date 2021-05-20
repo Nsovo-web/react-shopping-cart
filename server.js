@@ -68,14 +68,18 @@ const orderModel = mongoose.model("order",new mongoose.Schema({
 
 //CRUD operations for the order schema
 //insert new items
-app.post("/api/order",async(req, res)=>{
+app.post("/api/orders",async(req, res)=>{
     if(!req.body.name || !req.body.email || !req.body.address || !req.body.total || !req.body.cartItems){ //check that all required fields exist
        return res.send({message:"Please Enter All Required Fields"})
     }
-    const order = await orderModel(req.body.save())
+    const order = await orderModel(req.body);
     res.send(order)
 })
-
+app.get('/api/orders', async(req, res)=>{
+    //get the list of products from the database using the model
+    const orders = await orderModel.find(); //there is no condition, so return all products. and await for response
+    res.send(orders);
+    })
 
 //listen to a port and launch the server
 

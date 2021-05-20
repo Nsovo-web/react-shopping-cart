@@ -1,17 +1,18 @@
 import {CREATE_ORDER,CLEAR_CART,CLEAR_ORDER} from '../types'
 
 export const createOrder = (order)=>(dispatch)=>{
-    fetch("/api/order",{
-        method: "POST",
+    fetch("/api/orders",{
+        method: 'POST',
         headers:{
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(order)
-    }).then(response=>response.json()).then(data=>{
+        body: JSON.stringify(order),
+    }).then(res=>res.json()).then((data)=>{
         dispatch(
             {type:CREATE_ORDER,
              payload: data
             })
+           // console.log(data)
             localStorage.clear("cartItems")
             dispatch({type:CLEAR_CART})
     })
