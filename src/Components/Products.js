@@ -95,4 +95,4 @@ import {fetchProducts} from '../Actions/productActions'
     }
 }
 //we set an items field in the reducer , so use products.items to retrieve the product
-export default connect((state)=>({products:state.products.items}),{fetchProducts})(Products)
+export default connect((state)=>({products:state.products.filteredItems}),{fetchProducts})(Products)
