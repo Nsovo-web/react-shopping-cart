@@ -5,6 +5,7 @@ import Modal from 'react-modal'
 import Zoom from 'react-reveal/Zoom'
 import {connect} from 'react-redux'
 import {fetchProducts} from '../Actions/productActions'
+import {addToCart} from '../Actions/cartActions'
 //import Flip from 'react-reveal/Flip';
 
  class Products extends Component {
@@ -95,4 +96,6 @@ import {fetchProducts} from '../Actions/productActions'
     }
 }
 //we set an items field in the reducer , so use products.items to retrieve the product
-export default connect((state)=>({products:state.products.filteredItems}),{fetchProducts})(Products)
+export default connect((state)=>({products:state.products.filteredItems}),{fetchProducts,
+addToCart
+})(Products)
