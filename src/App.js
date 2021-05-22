@@ -1,11 +1,11 @@
 import logo from './images/logo.jpg';
 
 import React from 'react';
-import Products from './Components/Products';
-import Filter from './Components/filter';
-import Cart from './Components/Cart';
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import store from './store'
 import { Provider } from 'react-redux';
+import homeScreen from './screens/homeScreen';
+import adminScreen from './screens/adminScreen';
 
 //featur-1 changes
 //convert function component to class componet
@@ -15,25 +15,29 @@ render(){
   return (
     <Provider store={store}>
     <>
-    
-  <div className="grid-container">
-      
-     <header>
-       <a href="/"><img alt={"logo"} src={logo} width="50px"/> Styles</a>
-     </header>
-     <main>
-        <div className="content" >
-          <div className="products">
-            <Filter />
-            <Products />
-          </div>
-          <div className="sidebar">
-             <Cart />
-          </div>
-       </div>
-     </main>
-     <footer>All Rights Reserved</footer>
-  </div>
+    <BrowserRouter>
+      <div className="grid-container"> 
+          <header>
+            <a href="/"><img alt={"logo"} src={logo} width="50px"/> Styles</a>
+            <nav>
+              <ul>
+                <li>
+                  <Link className="Link" to="/">Home</Link>
+               </li>
+                <li>
+                 <Link className="Link" to="/Admin">Admin</Link>
+               </li>
+              </ul>
+            </nav>
+          </header>
+          <main>
+            <Route path="/" component={homeScreen} exact/>
+            <Route path="/Admin" component={adminScreen} exact/>
+          </main>
+          <footer>All Rights Reserved</footer>
+        </div>
+    </BrowserRouter>
+ 
   </>
   </Provider>
 );
