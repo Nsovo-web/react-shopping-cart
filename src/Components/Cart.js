@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import {createOrder,clearOrder} from '../Actions/orderActions'
 import {removeFromCart} from '../Actions/cartActions'
 import Modal from 'react-modal'
-import { Zoom } from '@material-ui/core'
+//import { Zoom } from '@material-ui/core'
 
 class Cart extends Component {
     constructor(props) {
@@ -30,6 +30,8 @@ class Cart extends Component {
             address: this.state.address,
             cartItems:this.props.cartItems,
             total:this.props.cartItems.reduce((acc,cItem)=> acc + (cItem.price*cItem.count) ,0),
+          
+            
         };
         this.props.createOrder(Order);  //the action is from props, linked to orderActions
     }
@@ -55,8 +57,8 @@ class Cart extends Component {
                       <Modal isOpen={true} className="Modal Overlay">
                             <button className="close-modal" onClick={this.closeModal}>X</button>
                             <div className="order-details">
-                                <h3 className="success-msg">Your order has been place</h3>
-                                <h2>Order # {" "} {this.props.order._id}</h2>
+                                <h3 className="success-msg">Your order has been placed</h3>
+                                <h2>Order # {": "} {this.props.order._id}</h2>
                                 <ul>
                                     <li>
                                         <div>Name:</div>
@@ -71,8 +73,12 @@ class Cart extends Component {
                                         <div>{this.props.order.address}</div>
                                     </li>
                                     <li>
+                                        <div>Date:</div>
+                                        <div>{order.createdAt}</div>
+                                    </li>
+                                    <li>
                                         <div>Total:</div>
-                                        <div>{this.props.order.total}</div>
+                                        <div>{formatCurrency(this.props.order.total)}</div>
                                     </li>
                                     <li>
                                         <div>Cart Items:</div>

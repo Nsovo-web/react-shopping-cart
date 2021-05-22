@@ -24,15 +24,13 @@ render(){
      <main>
         <div className="content" >
           <div className="products">
-            <Filter 
-            />
+            <Filter />
             <Products />
           </div>
           <div className="sidebar">
              <Cart />
           </div>
-          
-        </div>
+       </div>
      </main>
      <footer>All Rights Reserved</footer>
   </div>

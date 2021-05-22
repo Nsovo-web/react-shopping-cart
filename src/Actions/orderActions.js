@@ -12,7 +12,7 @@ export const createOrder = (order)=>(dispatch)=>{
             {type:CREATE_ORDER,
              payload: data
             })
-           // console.log(data)
+            console.log(data)
             localStorage.clear("cartItems")
             dispatch({type:CLEAR_CART})
     })

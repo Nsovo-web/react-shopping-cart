@@ -72,7 +72,7 @@ app.post("/api/orders",async(req, res)=>{
     if(!req.body.name || !req.body.email || !req.body.address || !req.body.total || !req.body.cartItems){ //check that all required fields exist
        return res.send({message:"Please Enter All Required Fields"})
     }
-    const order = await orderModel(req.body);
+    const order = await orderModel(req.body).save();
     res.send(order)
 })
 app.get('/api/orders', async(req, res)=>{
@@ -80,6 +80,11 @@ app.get('/api/orders', async(req, res)=>{
     const orders = await orderModel.find(); //there is no condition, so return all products. and await for response
     res.send(orders);
     })
+
+app.delete("/api/orders/:id", async (req, res) => {
+    const order = await orderModel.findByIdAndDelete(req.params.id);
+    res.send(order);
+    });
 
 //listen to a port and launch the server
 
