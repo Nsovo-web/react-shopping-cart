@@ -33,10 +33,12 @@ class Cart extends Component {
           
             
         };
+        
         this.props.createOrder(Order);  //the action is from props, linked to orderActions
     }
     closeModal=()=>{
         this.props.clearOrder();
+        
         
      }
     render() {

@@ -16,6 +16,7 @@ const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
+    fontSize:20,
   },
   body: {
     fontSize: 14,
@@ -46,8 +47,9 @@ class Orders extends Component {
         
     }
 
-     formatDate(date){
-        return date ;
+     formatDate(d){
+       let date = new Date(d)
+        return date.toDateString()// date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() ;
     }
     
     render() {
@@ -61,11 +63,11 @@ class Orders extends Component {
                 <TableRow>
                     <StyledTableCell>ID</StyledTableCell>
                     
-                    <StyledTableCell align="center">Name</StyledTableCell>
-                    <StyledTableCell align="center">Email</StyledTableCell>
-                    <StyledTableCell align="center">Items</StyledTableCell>
-                    <StyledTableCell align="center">Order Total</StyledTableCell>
-                    <StyledTableCell align="center">Date</StyledTableCell>
+                    <StyledTableCell align="left">Name</StyledTableCell>
+                    <StyledTableCell align="left">Email</StyledTableCell>
+                    <StyledTableCell align="left">Items</StyledTableCell>
+                    <StyledTableCell align="left">Order Total</StyledTableCell>
+                    <StyledTableCell align="left">Date</StyledTableCell>
                 </TableRow>
                 </TableHead>
                {!this.props.orders? (
@@ -77,16 +79,16 @@ class Orders extends Component {
                     <StyledTableCell component="th" scope="row">
                         {order._id}
                     </StyledTableCell>
-                    <StyledTableCell align="right">{order.name}</StyledTableCell>
-                    <StyledTableCell align="right">{order.email}</StyledTableCell>
-                    <StyledTableCell align="right">{order.cartItems.map((cartItem) => (
+                    <StyledTableCell align="left">{order.name}</StyledTableCell>
+                    <StyledTableCell align="left">{order.email}</StyledTableCell>
+                    <StyledTableCell align="left">{order.cartItems.map((cartItem) => (
                      <>
                        <div>{cartItem.count}{" x "}{cartItem.title}</div>
                        <div>{formatCurrency(cartItem.price)}</div>
                      </>
                      ))}</StyledTableCell>
-                    <StyledTableCell align="right">{formatCurrency(order.total)}</StyledTableCell>
-                    <StyledTableCell align="right">{this.formatDate(order.createdAt)}</StyledTableCell>
+                    <StyledTableCell align="left">{formatCurrency(order.total)}</StyledTableCell>
+                    <StyledTableCell align="left">{this.formatDate(order.createdAt)}</StyledTableCell>
                     </StyledTableRow>
                 ))}
                 </TableBody>
